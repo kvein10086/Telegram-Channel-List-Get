@@ -11,7 +11,8 @@ with TelegramClient('session_name', api_id, api_hash) as client:
     
     # 遍历并打印所有频道的名称和链接
     for dialog in dialogs:
-        if dialog.is_channel:
+        # 确保这是一个频道（不是群组或私聊）
+        if dialog.is_channel and not dialog.is_group:
             channel_name = dialog.name  # 获取频道名称
             channel_link = dialog.entity.username  # 获取频道链接 (如果是公开频道)
             
