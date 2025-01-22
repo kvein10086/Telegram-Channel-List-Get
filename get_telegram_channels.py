@@ -20,11 +20,12 @@ with TelegramClient('session_name', api_id, api_hash) as client:
             channel_name = dialog.name  # 获取频道名称
             channel_link = dialog.entity.username  # 获取频道链接 (如果是公开频道)
             
-            # 如果是公开频道，存储链接；如果是私密频道，则存储 "私密频道"
+            # 如果是公开频道，存储链接和 TGStat 搜索链接；如果是私密频道，则存储 "私密频道"
             if channel_link:
-                channel_data.append({"频道名称": channel_name, "频道链接": f"https://t.me/{channel_link}"})
+                tgstat_link = f"https://tgstat.com/channel/@{channel_link}"
+                channel_data.append({"频道名称": channel_name, "频道链接": f"https://t.me/{channel_link}", "TGStat链接": tgstat_link})
             else:
-                channel_data.append({"频道名称": channel_name, "频道链接": "私密频道，无法显示链接"})
+                channel_data.append({"频道名称": channel_name, "频道链接": "私密频道，无法显示链接", "TGStat链接": "私密频道，无法生成链接"})
 
     # 将数据保存到 Excel 文件
     df = pd.DataFrame(channel_data)
