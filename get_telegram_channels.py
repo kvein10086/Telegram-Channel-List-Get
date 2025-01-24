@@ -2,8 +2,8 @@ from telethon.sync import TelegramClient
 import pandas as pd
 
 # 输入您的 API ID 和 API Hash
-api_id = '25624480'  # 替换为您的 API ID
-api_hash = 'Ya2a415b7412da6a62e9f01273aadc36a'  # 替换为您的 API Hash
+api_id = ''  # 替换为您的 API ID
+api_hash = ''  # 替换为您的 API Hash
 
 # 创建 Telegram 客户端对象
 with TelegramClient('session_name', api_id, api_hash) as client:
